@@ -1,19 +1,6 @@
 <?php
-// Koneksi ke database
-$conn = mysqli_connect("localhost", "root", "", "phpdasar", 3307);
-
-// Query untuk mengambil data laptop
-$result = mysqli_query($conn, "SELECT * FROM laptop");
-
-// Ambil data (fetch) laptop dari objek result
-// mysqli_fetch_row() // mengembalikan array numerik
-// mysqli_fetch_assoc() // mengembalikan array associative
-// mysqli_fetch_array() // mengembalikan keduanya
-// mysqli_fetch_object() // mengembalikan objek pakai tanda "->"
-
-// while ( $ltp = mysqli_fetch_assoc($result) ) {
-//     var_dump($ltp);
-// }
+require 'functions.php';
+$laptop = query("SELECT * FROM laptop");
 
 ?>
 
@@ -39,7 +26,7 @@ $result = mysqli_query($conn, "SELECT * FROM laptop");
         </tr>
 
         <?php $i = 1; ?>
-        <?php while ( $row = mysqli_fetch_assoc($result) ) : ?>
+        <?php foreach( $laptop as $row) : ?>
         <tr>
             <td><?= $i; ?></td>
             <td>
@@ -52,7 +39,7 @@ $result = mysqli_query($conn, "SELECT * FROM laptop");
             <td><?= $row["tahunRilis"] ?></td>
             <td><?= $row["harga"] ?></td>
         </tr>
-        <?php $i++; endwhile; ?>
+        <?php $i++; endforeach; ?>
     </table>
 </body>
 </html>
