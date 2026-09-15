@@ -33,7 +33,8 @@ $laptop = query("SELECT * FROM laptop");
             <td><?= $i; ?></td>
             <td>
                 <a href="">edit</a> |
-                <a href="">hapus</a>
+                <a href="hapus.php?id=<?= $row["id"]; ?>" 
+                onclick="return confirm('Yakin?');">hapus</a>
             </td>
             <td><img src="img/<?= $row["gambar"] ?>" width="100"></td>
             <td><?= $row["merk"] ?></td>
